@@ -1,0 +1,289 @@
+/* 基本設定 */
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; /* 通常時の背景色 */
+    color: #333; /* 通常時の文字色 */
+    overflow-x: hidden; /* 横スクロールバーが出ないように */
+}
+
+/* ヘッダー */
+header {
+    background-color: #0056b3; /* 青系の背景色 */
+    color: #ffffff;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex; /* ロゴとタイトルを横並びにするためにFlexboxを使用 */
+    align-items: flex-start; /* ロゴとタイトル群の上端を揃える */
+    justify-content: center; /* 水平方向中央揃え */
+    flex-wrap: wrap; /* 小さい画面で折り返す */
+    position: relative; /* ヘッダーロゴの基準点とする */
+    /* アニメーションでフェードインさせる */
+    opacity: 0;
+    animation: headerFadeIn 1s ease-out 3.5s forwards; /* 3.5秒後に開始 */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+header p {
+    font-size: 1.2em;
+    width: 100%; /* サブタイトルは常に新しい行に */
+    text-align: center;
+    margin-top: 5px; /* タイトルとの間隔を調整 */
+}
+
+/* ナビゲーション */
+nav {
+    background-color: #004499; /* ヘッダーより少し濃い青 */
+    padding: 10px 0;
+    text-align: center;
+    /* アニメーションでフェードインさせる */
+    opacity: 0;
+    animation: contentFadeIn 1s ease-out 3.8s forwards; /* ヘッダーより少し遅れて開始 */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* 小さい画面で折り返す */
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none; /* 下線を削除 */
+    font-weight: bold;
+    padding: 5px 10px;
+    transition: color 0.3s ease; /* ホバー時のトランジションを色のみに */
+}
+
+nav ul li a:hover {
+    color: #cceeff; /* ホバー時に明るい青に */
+}
+
+/* メインコンテンツ */
+main {
+    max-width: 960px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    /* アニメーションでフェードインさせる */
+    opacity: 0;
+    animation: contentFadeIn 1s ease-out 4.1s forwards; /* ナビより少し遅れて開始 */
+}
+
+section {
+    margin-bottom: 40px;
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+section:last-child {
+    border-bottom: none;
+}
+
+/* h2見出しのスタイル - 青色の下線はh2のみに適用 */
+h2 {
+    color: #0056b3; /* 見出しの色 */
+    border-bottom: 2px solid #0056b3;
+    padding-bottom: 5px;
+    margin-top: 0;
+}
+
+/* h3見出しのスタイル - h2と区別するため、下線なし、色も少し調整 */
+h3 {
+    color: #000000; /* h2より少し明るい青色 */
+    border-bottom: none; /* 下線をなくす */
+    padding-bottom: 0; /* パディングをリセット */
+    margin-top: 25px; /* 上部に少しスペースを追加 */
+    margin-bottom: 15px; /* 下部に少しスペースを追加 */
+    font-size: 1.4em; /* 少し小さめに */
+}
+
+
+ul, ol {
+    margin: 20px 0;
+    padding-left: 25px;
+}
+
+ul li, ol li {
+    margin-bottom: 10px;
+}
+
+/* その他の画像スタイル */
+.responsive-img {
+    max-width: 50%; /* ここを100%から50%に変更して画像を半分にする */
+    height: auto;
+    display: block; /* 中央寄せのためにブロック要素に */
+    margin: 20px auto; /* 上下20px、左右自動で中央寄せ */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* フッター */
+footer {
+    background-color: #333;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+    /* アニメーションでフェードインさせる */
+    opacity: 0;
+    animation: contentFadeIn 1s ease-out 4.4s forwards; /* メインより少し遅れて開始 */
+}
+
+/* --- 全画面ロゴアニメーションのスタイル --- */
+
+/* 全画面ロゴオーバーレイ */
+#intro-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff; /* ロゴ表示中は白背景 */
+    z-index: 10000; /* 最前面に表示 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* アニメーションを適用 */
+    animation: introFadeOut 1s ease-out 2.5s forwards; /* 2.5秒後にフェードアウト開始 */
+    opacity: 1; /* 初期は表示 */
+    visibility: visible;
+}
+
+.intro-logo-fullscreen {
+    max-width: 60%; /* 全画面表示時のロゴの最大サイズ */
+    max-height: 60%;
+    object-fit: contain; /* アスペクト比を維持してフィット */
+    opacity: 0;
+    animation: logoFullscreenFadeIn 1s ease-out 0.1s forwards; /* 0.1秒後にフェードイン開始 */
+}
+
+/* ヘッダー内の最終的なロゴ */
+.header-logo {
+    height: 90px; /* 目視で調整した概算値。必要に応じて調整してください */
+    width: auto; /* 高さに合わせて幅を自動調整 */
+    margin-right: 15px; /* ロゴとタイトル群の間にマージン */
+    /* アニメーションでフェードインさせる */
+    opacity: 0;
+    animation: headerLogoFadeIn 1s ease-out 3.5s forwards; /* ヘッダーと同時に表示 */
+}
+
+/* --- Keyframe アニメーション定義 --- */
+
+/* 全画面ロゴのフェードイン */
+@keyframes logoFullscreenFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* 全画面オーバーレイのフェードアウト */
+@keyframes introFadeOut {
+    from { opacity: 1; visibility: visible; }
+    to { opacity: 0; visibility: hidden; }
+}
+
+/* ヘッダーのフェードイン */
+@keyframes headerFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ヘッダー内のロゴのフェードイン */
+@keyframes headerLogoFadeIn {
+    from { opacity: 0; transform: scale(0); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* コンテンツ（ナビ、メイン、フッター）のフェードイン */
+@keyframes contentFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* レスポンシブデザイン */
+
+/* 小画面（スマートフォン）向け */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column; /* ロゴとタイトルを縦並びにする */
+        padding-bottom: 10px; /* 下の余白を調整 */
+        align-items: center; /* 縦並びなので中央揃えに戻す */
+    }
+    header h1 {
+        font-size: 1.8em;
+        margin-left: 0; /* 縦並びなのでマージンをリセット */
+        margin-top: 10px; /* ロゴとの間隔 */
+    }
+    header p {
+        font-size: 1em;
+    }
+    .header-logo {
+        height: 50px; /* 小画面でのロゴサイズ */
+        margin-left: 0; /* 縦並びなのでマージンをリセット */
+        margin-right: 0;
+    }
+    .intro-logo-fullscreen {
+        max-width: 80%;
+        max-height: 80%;
+    }
+    nav ul {
+        flex-direction: column;
+    }
+    nav ul li {
+        margin: 5px 0;
+    }
+    main {
+        margin: 10px;
+        padding: 15px;
+    }
+    section {
+        padding: 15px 0;
+    }
+    h2 {
+        font-size: 1.5em;
+    }
+    .responsive-img {
+        max-width: 80%; /* 小画面では少し大きく表示 */
+    }
+}
+
+/* さらに小さな画面（一部のスマートフォン）向け */
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5em;
+    }
+    header p {
+        font-size: 0.9em;
+    }
+    nav ul li a {
+        padding: 8px;
+    }
+    main {
+        padding: 10px;
+    }
+    h2 {
+        font-size: 1.3em;
+    }
+    p, ul li, ol li {
+        font-size: 0.95em;
+    }
+    .responsive-img {
+        max-width: 90%; /* さらに小さな画面ではさらに大きく */
+    }
+}
